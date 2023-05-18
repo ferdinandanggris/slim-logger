@@ -67,7 +67,7 @@ class Logger {
             'name' => 'logger_',
             'name_format' => 'Y-m-d',
             'extension' => 'log',
-            'message_format' => '[%label%] %date% %message%'
+            'message_format' => '%label%| %date% %message%'
         ), $settings);
 
         // Remove trailing slash from log path
@@ -103,7 +103,7 @@ class Logger {
         // Method access
         $method = $request->getMethod();
 
-        $this->write(sprintf("|%d|%f s|%s|%s %s", $response->getStatusCode(), $latency, $clientIP, $method, $path), self::INFO);
+        $this->write(sprintf("|%d|%f s|%s|%s| %s|%s", $response->getStatusCode(), $latency, $clientIP, $method, $path), self::INFO);
 
         return $response;
     }
